@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Dashboard</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+</head>
+<body>
+
+<h1>Welcome to Dashboard 🎉</h1>
+
+<h2>Your Habits</h2>
+<h2>My Tasks</h2>
+
+<input type="text" id="taskInput" placeholder="Enter task">
+<button onclick="addTask()">Add Task</button>
+<input type="text" id="habitInput" placeholder="Enter habit">
+<button onclick="addHabit()">Add</button>
+
+<ul id="habitList"></ul>
+
+<button onclick="logout()">Logout</button>
+
+<script src="dashboard.js"></script>
+</body>
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Login</title>
+  <link rel="stylesheet" href="style.css">
+
+  <!-- Firebase Scripts -->
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+</head>
+<body>
+
+<h1>Login / Signup 🔐</h1>
+
+<input type="email" id="email" placeholder="Enter Email"><br>
+<input type="password" id="password" placeholder="Enter Password"><br>
+
+<button onclick="signup()">Sign Up</button>
+<button onclick="login()">Login</button>
+<button onclick="logout()">Logout</button>
+
+<p id="status"></p>
+
+<script src="login.js"></script>
+</body>
+</html>
