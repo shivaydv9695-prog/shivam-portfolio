@@ -472,3 +472,145 @@ button:hover {
   z-index: -1;
   background: black;
 }
+body {
+  background: #0a0a0a;
+  color: white;
+  font-family: 'Poppins', sans-serif;
+}
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px 50px;
+}
+
+.navbar h2 {
+  color: cyan;
+}
+
+.navbar a {
+  color: white;
+  margin-left: 20px;
+  text-decoration: none;
+}
+button {
+  padding: 10px 20px;
+  border: none;
+  background: cyan;
+  color: black;
+  border-radius: 5px;
+  margin-right: 10px;
+  cursor: pointer;
+}
+.card {
+  background: #111;
+  padding: 20px;
+  border-radius: 10px;
+  margin: 10px;
+}
+h1 span {
+  color: cyan;
+  text-shadow: 0 0 8px cyan; /* पहले ज्यादा था */
+}
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 100vh;
+  padding: 0 80px;
+}
+.profile-img {
+  width: 250px;
+  border-radius: 50%;
+  box-shadow: 0 0 30px rgba(0,255,255,0.3);
+}
+.profile-img:hover {
+  transform: scale(1.05);
+  transition: 0.3s;
+}
+.container {
+  display: flex;
+  align-items: center;   /* vertical center */
+  justify-content: space-between;
+  height: 100vh;
+  padding: 0 50px;
+}
+
+.left {
+  width: 50%;
+}
+
+.right {
+  width: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+body {
+  margin: 0;
+  background: black;
+  color: white;
+}
+
+/* MAIN FIX */
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 100vh;
+  padding: 0 50px;
+}
+
+/* LEFT */
+.left {
+  width: 50%;
+}
+
+/* RIGHT */
+.right {
+  width: 50%;
+  display: flex;
+  justify-content: center;
+}
+
+/* IMAGE */
+.right img {
+  width: 300px;
+}
+canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: -1;
+}
+.right img {
+  width: 260px;
+  height: 260px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 4px solid #00f7ff;
+  box-shadow: 0 0 40px #00f7ff;
+}
+.right img {
+  filter: brightness(1.1) contrast(1.1);
+}
+.right img:hover {
+  transform: scale(1.1);
+  transition: 0.4s;
+}
+.profile-circle {
+  width: 260px;
+  height: 260px;
+  border-radius: 50%;
+  border: 4px solid #00f7ff;
+  box-shadow: 0 0 40px #00f7ff;
+  overflow: hidden;   /* 🔥 ये सबसे important */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.profile-circle img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
