@@ -1,36 +1,35 @@
 const firebaseConfig = {
-  apiKey: "AIzaSyBGsF1YWPYKBPxOYe2hDB-pPIvPV4P5L4c",
-  authDomain: "shivam-productivity-hub.firebaseapp.com",
-  projectId: "shivam-productivity-hub",
-  storageBucket: "shivam-productivity-hub.firebasestorage.app",
-  messagingSenderId: "612139607689",
-  appId: "1:612139607689:web:db3a7de04b981ef3d5c858",
-  measurementId: "G-2GN8FDVN0X"
+  apiKey: "YOUR_API_KEY",
+  authDomain: "YOUR_AUTH_DOMAIN",
+  projectId: "YOUR_PROJECT_ID",
+  storageBucket: "YOUR_STORAGE_BUCKET",
+  messagingSenderId: "YOUR_SENDER_ID",
+  appId: "YOUR_APP_ID"
 };
 
-// Firebase Initialize
 firebase.initializeApp(firebaseConfig);
 
 const auth = firebase.auth();
-const db = firebase.firestore();
+const storage = firebase.storage();
 
-let tasks = [];
-let userId = null;
+let currentUser = null;
 
 
-// CHECK LOGIN STATUS
+// CHECK LOGIN
 auth.onAuthStateChanged((user) => {
 
   if (user) {
 
-    userId = user.uid;
+    currentUser = user;
 
-    // Load user's tasks
-    loadTasks();
+    // Login hone ke baad files show karo
+    loadFiles("result");
+    loadFiles("fee");
+    loadFiles("certificate");
 
   } else {
 
-    // User login nahi hai
+    // Login nahi hai to login page
     window.location.href = "login.html";
 
   }
@@ -38,159 +37,139 @@ auth.onAuthStateChanged((user) => {
 });
 
 
-// LOAD TASKS FROM FIREBASE
-function loadTasks() {
+// UPLOAD FILE
+function uploadFile(type) {
 
-  db.collection("tasks")
-    .doc(userId)
-    .get()
-    .then((doc) => {
-
-      if (doc.exists) {
-
-        tasks = doc.data().tasks || [];
-
-      } else {
-
-        tasks = [];
-
-      }
-
-      displayTasks();
-
-    })
-    .catch((error) => {
-
-      console.error("Error loading tasks:", error);
-
-    });
-
-}
-
-
-// SAVE TASKS TO FIREBASE
-function saveTasks() {
-
-  if (!userId) return;
-
-  db.collection("tasks")
-    .doc(userId)
-    .set({
-      tasks: tasks
-    })
-    .catch((error) => {
-
-      console.error("Error saving tasks:", error);
-
-    });
-
-}
-
-
-// ADD TASK
-function addTask() {
-
-  const input = document.getElementById("taskInput");
-
-  const taskName = input.value.trim();
-
-  if (taskName === "") {
+  if (!currentUser) {
+    alert("Please login first");
     return;
   }
 
-  tasks.push({
-    name: taskName,
-    done: false
-  });
+  let input;
 
-  input.value = "";
+  if (type === "result") {
+    input = document.getElementById("resultFile");
+  }
 
-  saveTasks();
+  if (type === "fee") {
+    input = document.getElementById("feeFile");
+  }
 
-  displayTasks();
+  if (type === "certificate") {
+    input = document.getElementById("certificateFile");
+  }
 
-}
+  const file = input.files[0];
 
+  if (!file) {
+    alert("Please select a file");
+    return;
+  }
 
-// DISPLAY TASKS
-function displayTasks() {
+  document.getElementById("status").innerText =
+    "Uploading... Please wait ⏳";
 
-  const list = document.getElementById("taskList");
+  // Har user ka alag folder
+  const filePath =
+    `users/${currentUser.uid}/${type}/${Date.now()}_${file.name}`;
 
-  list.innerHTML = "";
+  const storageRef = storage.ref(filePath);
 
-  tasks.forEach((task, index) => {
+  storageRef.put(file)
 
-    const li = document.createElement("li");
+    .then(() => {
 
-    li.innerHTML = `
-      <span
-        onclick="toggleTask(${index})"
-        style="
-          cursor: pointer;
-          ${task.done ? "text-decoration: line-through;" : ""}
-        "
-      >
-        ${task.name}
-      </span>
+      document.getElementById("status").innerText =
+        "File uploaded successfully ✅";
 
-      <button onclick="deleteTask(${index})">
-        ❌
-      </button>
-    `;
+      input.value = "";
 
-    list.appendChild(li);
+      loadFiles(type);
 
-  });
+    })
 
-}
+    .catch((error) => {
 
+      console.error(error);
 
-// TOGGLE TASK
-function toggleTask(index) {
+      document.getElementById("status").innerText =
+        "Upload failed ❌ " + error.message;
 
-  tasks[index].done = !tasks[index].done;
-
-  saveTasks();
-
-  displayTasks();
+    });
 
 }
 
 
-// DELETE TASK
-function deleteTask(index) {
+// SHOW / VIEW FILES
+function loadFiles(type) {
 
-  tasks.splice(index, 1);
+  const list = document.getElementById(type + "List");
 
-  saveTasks();
+  list.innerHTML = "Loading...";
 
-  displayTasks();
+  const folderRef =
+    storage.ref(`users/${currentUser.uid}/${type}`);
+
+  folderRef.listAll()
+
+    .then((result) => {
+
+      list.innerHTML = "";
+
+      if (result.items.length === 0) {
+
+        list.innerHTML =
+          "<p>No documents uploaded yet.</p>";
+
+        return;
+      }
+
+      result.items.forEach((itemRef) => {
+
+        itemRef.getDownloadURL()
+
+          .then((url) => {
+
+            const link =
+              document.createElement("a");
+
+            link.href = url;
+
+            link.target = "_blank";
+
+            link.innerText =
+              "📄 View " +
+              itemRef.name.replace(/^\d+_/, "");
+
+            list.appendChild(link);
+
+          });
+
+      });
+
+    })
+
+    .catch((error) => {
+
+      console.error(error);
+
+      list.innerHTML =
+        "Unable to load documents.";
+
+    });
 
 }
-
-
-// PRESS ENTER TO ADD TASK
-document
-  .getElementById("taskInput")
-  .addEventListener("keypress", function(event) {
-
-    if (event.key === "Enter") {
-
-      addTask();
-
-    }
-
-  });
 
 
 // LOGOUT
 function logout() {
 
   auth.signOut()
+
     .then(() => {
 
-      window.location.href = "login.html";
+      window.location.href =
+        "login.html";
 
     });
 

@@ -3,49 +3,181 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My College Documents</title>
 
-  <title>Dashboard</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
 
-  <link rel="stylesheet" href="style.css">
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: Arial, sans-serif;
+      color: white;
+      background: #050505;
+      text-align: center;
+    }
+
+    .dashboard {
+      width: 90%;
+      max-width: 1000px;
+      margin: auto;
+      padding: 50px 20px;
+    }
+
+    h1 {
+      font-size: 40px;
+      margin-bottom: 10px;
+    }
+
+    h1 span, h2 {
+      color: cyan;
+      text-shadow: 0 0 15px cyan;
+    }
+
+    .subtitle {
+      color: #aaa;
+      margin-bottom: 40px;
+    }
+
+    .documents {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 25px;
+    }
+
+    .card {
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(0,255,255,0.25);
+      border-radius: 18px;
+      padding: 25px;
+      transition: 0.3s;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 0 25px rgba(0,255,255,0.35);
+    }
+
+    .card h3 {
+      color: cyan;
+      font-size: 22px;
+    }
+
+    input[type="file"] {
+      width: 100%;
+      margin: 15px 0;
+    }
+
+    button {
+      padding: 11px 20px;
+      border: none;
+      border-radius: 8px;
+      background: cyan;
+      color: #000;
+      cursor: pointer;
+      font-weight: bold;
+      margin: 5px;
+    }
+
+    button:hover {
+      box-shadow: 0 0 15px cyan;
+    }
+
+    .file-list {
+      margin-top: 15px;
+      text-align: left;
+    }
+
+    .file-list a {
+      display: block;
+      color: cyan;
+      margin: 8px 0;
+      word-break: break-all;
+    }
+
+    #status {
+      margin: 20px;
+      color: cyan;
+    }
+
+    .logout {
+      margin-top: 40px;
+      background: #ff4444;
+      color: white;
+    }
+  </style>
 
   <!-- Firebase -->
   <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
   <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-storage.js"></script>
 </head>
 
 <body>
 
-  <h1>Welcome to Dashboard 🎉</h1>
+<div class="dashboard">
 
-  <h2>My Tasks</h2>
+  <h1>Welcome to <span>Dashboard</span> 👋</h1>
+  <p class="subtitle">Manage your college documents securely</p>
 
-  <input
-    type="text"
-    id="taskInput"
-    placeholder="Enter task"
-  >
+  <h2>📚 My College Documents</h2>
 
-  <button onclick="addTask()">
-    Add Task
-  </button>
+  <p id="status"></p>
 
-  <!-- Task List -->
-  <ul id="taskList"></ul>
+  <div class="documents">
 
-  <br>
+    <!-- RESULT -->
+    <div class="card">
+      <h3>📊 Results</h3>
 
-  <a href="habit.html">
-    <button>Open Habit Tracker</button>
-  </a>
+      <input type="file" id="resultFile">
 
-  <br><br>
+      <button onclick="uploadFile('result')">
+        Upload Result
+      </button>
 
-  <button onclick="logout()">
+      <div id="resultList" class="file-list"></div>
+    </div>
+
+
+    <!-- FEE RECEIPT -->
+    <div class="card">
+      <h3>🧾 Fee Receipts</h3>
+
+      <input type="file" id="feeFile">
+
+      <button onclick="uploadFile('fee')">
+        Upload Receipt
+      </button>
+
+      <div id="feeList" class="file-list"></div>
+    </div>
+
+
+    <!-- CERTIFICATE -->
+    <div class="card">
+      <h3>🎓 Certificates</h3>
+
+      <input type="file" id="certificateFile">
+
+      <button onclick="uploadFile('certificate')">
+        Upload Certificate
+      </button>
+
+      <div id="certificateList" class="file-list"></div>
+    </div>
+
+  </div>
+
+  <button class="logout" onclick="logout()">
     Logout
   </button>
 
-  <script src="dashboard.js"></script>
+</div>
+
+<script src="dashboard.js"></script>
 
 </body>
 </html>
