@@ -1,0 +1,132 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: Arial, sans-serif;
+  background:
+    radial-gradient(circle at top right, #003b46, transparent 40%),
+    radial-gradient(circle at bottom left, #00252b, transparent 40%),
+    #05090a;
+  color: white;
+}
+
+.login-container {
+  width: 100%;
+  max-width: 420px;
+  padding: 20px;
+}
+
+.login-card {
+  padding: 40px 35px;
+  text-align: center;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(0, 255, 255, 0.2);
+  backdrop-filter: blur(15px);
+  box-shadow: 0 0 40px rgba(0, 255, 255, 0.12);
+}
+
+.login-card h1 {
+  font-size: 30px;
+  margin-bottom: 8px;
+}
+
+.login-card h1 span {
+  color: #00f7ff;
+  text-shadow: 0 0 15px rgba(0, 247, 255, 0.6);
+}
+
+.subtitle {
+  color: #aaa;
+  font-size: 14px;
+  margin-bottom: 30px;
+}
+
+.input-group {
+  margin-bottom: 16px;
+}
+
+.input-group input {
+  width: 100%;
+  padding: 14px 16px;
+  border-radius: 10px;
+  border: 1px solid #333;
+  outline: none;
+  background: rgba(0, 0, 0, 0.4);
+  color: white;
+  font-size: 15px;
+  transition: 0.3s;
+}
+
+.input-group input:focus {
+  border-color: #00f7ff;
+  box-shadow: 0 0 10px rgba(0, 247, 255, 0.2);
+}
+
+.button-group {
+  display: flex;
+  gap: 12px;
+  margin-top: 25px;
+}
+
+.button-group button {
+  flex: 1;
+  padding: 13px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 15px;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+.login-btn {
+  background: #00f7ff;
+  color: #001416;
+}
+
+.signup-btn {
+  background: transparent;
+  color: #00f7ff;
+  border: 1px solid #00f7ff !important;
+}
+
+.button-group button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 0 18px rgba(0, 247, 255, 0.4);
+}
+
+#status {
+  margin-top: 20px;
+  font-size: 14px;
+  color: #00f7ff;
+}
+
+.back-link {
+  display: inline-block;
+  margin-top: 25px;
+  color: #aaa;
+  text-decoration: none;
+  font-size: 14px;
+}
+
+.back-link:hover {
+  color: #00f7ff;
+}
+
+@media (max-width: 500px) {
+  .login-card {
+    padding: 30px 20px;
+  }
+
+  .button-group {
+    flex-direction: column;
+  }
+}
