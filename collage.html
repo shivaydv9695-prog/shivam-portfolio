@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My College - Shivam</title>
+    <title>College Dashboard</title>
 
     <style>
         body {
@@ -19,23 +19,23 @@
             margin-top: 50px;
         }
 
-        .college-container {
+        .container {
             display: flex;
             justify-content: center;
             flex-wrap: wrap;
-            gap: 20px;
-            margin-top: 50px;
+            gap: 25px;
+            padding: 50px 20px;
         }
 
-        .college-card {
+        .card {
+            width: 260px;
+            padding: 25px;
             background: #111;
             border: 1px solid #333;
-            padding: 30px;
-            width: 250px;
             border-radius: 15px;
         }
 
-        .college-card h2 {
+        .card h2 {
             color: cyan;
         }
 
@@ -56,31 +56,38 @@
 
 <body>
 
-    <h1>My College Dashboard</h1>
+    <h1>🎓 My College Dashboard</h1>
 
-    <div class="college-container">
+    <div class="container">
 
-        <div class="college-card">
-            <h2>🎓 Current Year</h2>
+        <div class="card">
+            <h2>Course</h2>
             <p>B.Tech CSE (AI)</p>
+        </div>
+
+        <div class="card">
+            <h2>Current Year</h2>
             <p>1st Year</p>
         </div>
 
-        <div class="college-card">
-            <h2>🧾 Fee Receipt</h2>
-            <p>View my college fee receipt</p>
-            <button>View Receipt</button>
+        <div class="card">
+            <h2>Current Semester</h2>
+            <p>2nd Semester</p>
         </div>
 
-        <div class="college-card">
-            <h2>📊 Semester Result</h2>
-            <p>View semester results</p>
-            <button>View Result</button>
+        <div class="card">
+            <h2>🧾 Fee Receipt</h2>
+            <p>My college fee receipts</p>
+            <button>View Receipts</button>
+        </div>
+
+        <div class="card">
+            <h2>📊 Results</h2>
+            <p>My semester results</p>
+            <button>View Results</button>
         </div>
 
     </div>
-
-    <br><br>
 
     <a href="index.html">
         <button>← Back to Home</button>
