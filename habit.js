@@ -1,37 +1,101 @@
 let habits = JSON.parse(localStorage.getItem("habits")) || [];
 
+function saveHabits() {
+    localStorage.setItem("habits", JSON.stringify(habits));
+}
+
 function displayHabits() {
-  let list = document.getElementById("habitList");
-  list.innerHTML = "";
 
-  habits.forEach((habit, index) => {
-    let li = document.createElement("li");
+    const list = document.getElementById("habitList");
 
-    li.innerHTML = `
-      <input type="checkbox" ${habit.done ? "checked" : ""} 
-      onchange="toggleHabit(${index})">
-      ${habit.name}
-    `;
+    list.innerHTML = "";
 
-    list.appendChild(li);
-  });
+    habits.forEach((habit, index) => {
+
+        const li = document.createElement("li");
+
+        li.innerHTML = `
+            <input 
+                type="checkbox"
+                ${habit.done ? "checked" : ""}
+                onchange="toggleHabit(${index})"
+            >
+
+            <span class="habit-name ${habit.done ? "completed" : ""}">
+                ${habit.name}
+            </span>
+
+            <button 
+                class="delete-btn"
+                onclick="deleteHabit(${index})">
+                Delete
+            </button>
+        `;
+
+        list.appendChild(li);
+    });
+
+    updateProgress();
 }
 
 function addHabit() {
-  let input = document.getElementById("habitInput");
-  if (input.value === "") return;
 
-  habits.push({ name: input.value, done: false });
-  localStorage.setItem("habits", JSON.stringify(habits));
+    const input = document.getElementById("habitInput");
 
-  input.value = "";
-  displayHabits();
+    const habitName = input.value.trim();
+
+    if (habitName === "") {
+        return;
+    }
+
+    habits.push({
+        name: habitName,
+        done: false
+    });
+
+    saveHabits();
+
+    input.value = "";
+
+    displayHabits();
 }
 
 function toggleHabit(index) {
-  habits[index].done = !habits[index].done;
-  localStorage.setItem("habits", JSON.stringify(habits));
-  displayHabits();
+
+    habits[index].done = !habits[index].done;
+
+    saveHabits();
+
+    displayHabits();
 }
+
+function deleteHabit(index) {
+
+    habits.splice(index, 1);
+
+    saveHabits();
+
+    displayHabits();
+}
+
+function updateProgress() {
+
+    const completed = habits.filter(habit => habit.done).length;
+
+    document.getElementById("progressText").innerText =
+        `Completed: ${completed} / ${habits.length}`;
+}
+
+/* Add habit by pressing Enter */
+
+document
+    .getElementById("habitInput")
+    .addEventListener("keypress", function(event) {
+
+        if (event.key === "Enter") {
+            addHabit();
+        }
+
+    });
 
 displayHabits();

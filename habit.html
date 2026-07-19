@@ -1,20 +1,51 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
-  <title>Habit Tracker</title>
-  <link rel="stylesheet" href="habit.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Habit Tracker - Shivam</title>
+
+    <link rel="stylesheet" href="habit.css">
 </head>
+
 <body>
 
-<h1>Habit Tracker 🔥</h1>
+    <div class="habit-container">
 
-<input type="text" id="habitInput" placeholder="Enter habit">
-<button onclick="addHabit()">Add</button>
+        <h1>🔥 Habit Tracker</h1>
 
-<ul id="habitList"></ul>
+        <p class="subtitle">Build better habits every day</p>
 
-<a href="index.html">⬅ Back</a>
+        <!-- ADD HABIT -->
+        <div class="input-box">
+            <input
+                type="text"
+                id="habitInput"
+                placeholder="Enter a new habit..."
+            >
 
-<script src="habit.js"></script>
+            <button onclick="addHabit()">Add Habit</button>
+        </div>
+
+        <!-- PROGRESS -->
+        <div class="progress-box">
+            <p id="progressText">Completed: 0 / 0</p>
+        </div>
+
+        <!-- HABIT LIST -->
+        <ul id="habitList"></ul>
+
+        <!-- BACK BUTTON -->
+        <a href="index.html" class="back-btn">
+            ← Back to Home
+        </a>
+
+    </div>
+
+    <script src="habit.js"></script>
+
 </body>
+
 </html>

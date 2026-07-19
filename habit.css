@@ -1,22 +1,114 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
 body {
-  background: #0a0a0a;
-  color: white;
-  text-align: center;
-  font-family: Arial;
+    min-height: 100vh;
+    background: #0a0a0a;
+    color: white;
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 60px 20px;
+}
+
+.habit-container {
+    width: 100%;
+    max-width: 500px;
+    text-align: center;
+}
+
+h1 {
+    color: #00f7ff;
+    margin-bottom: 10px;
+}
+
+.subtitle {
+    color: #aaa;
+    margin-bottom: 30px;
+}
+
+.input-box {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 25px;
 }
 
 input {
-  padding: 10px;
-  margin: 10px;
+    flex: 1;
+    padding: 12px;
+    border: 1px solid #333;
+    border-radius: 6px;
+    background: #111;
+    color: white;
+    outline: none;
+}
+
+input:focus {
+    border-color: #00f7ff;
 }
 
 button {
-  padding: 10px;
-  background: cyan;
-  border: none;
+    padding: 12px 18px;
+    background: #00f7ff;
+    color: black;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
 }
 
-li {
-  list-style: none;
-  margin: 10px;
+.progress-box {
+    background: #111;
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+
+#habitList {
+    padding: 0;
+}
+
+#habitList li {
+    list-style: none;
+    background: #111;
+    border: 1px solid #222;
+    padding: 15px;
+    margin-bottom: 10px;
+    border-radius: 8px;
+
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.habit-name {
+    flex: 1;
+    text-align: left;
+}
+
+.completed {
+    text-decoration: line-through;
+    color: #777;
+}
+
+.delete-btn {
+    background: #ff4444;
+    color: white;
+    padding: 7px 12px;
+}
+
+.back-btn {
+    display: inline-block;
+    margin-top: 25px;
+    color: #00f7ff;
+    text-decoration: none;
+}
+
+@media (max-width: 500px) {
+    .input-box {
+        flex-direction: column;
+    }
 }
