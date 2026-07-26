@@ -913,3 +913,46 @@ button:hover {
         font-size: 14px;
     }
 }
+/* =====================================
+   CINEMATIC CORNER SPOTLIGHT
+   Existing background stays unchanged
+===================================== */
+
+body::before {
+    content: "";
+    position: fixed;
+
+    /* Light source: top-right corner */
+    top: -250px;
+    right: -250px;
+
+    width: 1100px;
+    height: 1100px;
+
+    /* Soft cyan/blue light spreading across site */
+    background: radial-gradient(
+        ellipse at center,
+        rgba(0, 247, 255, 0.28) 0%,
+        rgba(0, 174, 255, 0.18) 22%,
+        rgba(37, 99, 235, 0.10) 42%,
+        rgba(0, 247, 255, 0.04) 58%,
+        transparent 75%
+    );
+
+    filter: blur(35px);
+
+    pointer-events: none;
+
+    z-index: 0;
+}
+
+/* Keep website content above spotlight */
+
+.navbar,
+.container,
+.skills,
+.projects,
+#contact {
+    position: relative;
+    z-index: 1;
+}
