@@ -18,11 +18,10 @@ body {
   color: white;
   overflow-x: hidden;
 
-  /* PREMIUM DEVELOPER BACKGROUND */
-  background:
+  background-image:
     linear-gradient(
-      rgba(2, 6, 23, 0.82),
-      rgba(2, 6, 23, 0.94)
+      rgba(2, 6, 23, 0.45),
+      rgba(2, 6, 23, 0.70)
     ),
     url("https://images.unsplash.com/photo-1518770660439-4636190af475");
 
@@ -31,7 +30,6 @@ body {
   background-repeat: no-repeat;
   background-attachment: fixed;
 }
-
 
 /* ==============================
    NAVBAR
