@@ -1082,3 +1082,109 @@ body::after {
 
     padding-left: 20px;
 }
+/* ==============================
+   ABOUT ME
+================================ */
+
+.about {
+    min-height: 80vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 80px 8%;
+}
+
+.about-box {
+    width: 900px;
+    max-width: 100%;
+
+    padding: 50px;
+
+    text-align: center;
+
+    background: rgba(15, 23, 42, 0.55);
+    backdrop-filter: blur(15px);
+
+    border: 1px solid rgba(0, 247, 255, 0.25);
+    border-radius: 25px;
+
+    box-shadow:
+        0 20px 60px rgba(0,0,0,.4),
+        0 0 30px rgba(0,247,255,.08);
+}
+
+.about-box h2 {
+    font-size: 38px;
+    color: #00f7ff;
+    margin-bottom: 25px;
+
+    text-shadow: 0 0 15px rgba(0,247,255,.6);
+}
+
+.about-box h3 {
+    font-size: 27px;
+    margin-bottom: 20px;
+}
+
+.about-box h3 span {
+    color: #00f7ff;
+}
+
+.about-box p {
+    color: #cbd5e1;
+    line-height: 1.8;
+    margin: 12px auto;
+    max-width: 750px;
+}
+
+.about-info {
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+    margin-top: 35px;
+    flex-wrap: wrap;
+}
+
+.about-info div {
+    width: 180px;
+    padding: 20px;
+
+    background: rgba(0,247,255,.06);
+    border: 1px solid rgba(0,247,255,.3);
+    border-radius: 15px;
+
+    transition: .3s;
+}
+
+.about-info div:hover {
+    transform: translateY(-7px);
+
+    box-shadow:
+        0 0 20px rgba(0,247,255,.25);
+}
+
+.about-info strong {
+    display: block;
+    color: #00f7ff;
+    font-size: 20px;
+    margin-bottom: 7px;
+}
+
+.about-info span {
+    color: #ddd;
+}
+
+@media(max-width:768px){
+
+    .about {
+        padding: 60px 20px;
+    }
+
+    .about-box {
+        padding: 30px 20px;
+    }
+
+    .about-box h2 {
+        font-size: 30px;
+    }
+}
