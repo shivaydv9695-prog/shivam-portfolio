@@ -18,7 +18,23 @@
     <!-- NAVBAR -->
     <nav class="navbar">
 
-        <h2>Shivam</h2>
+        <div class="brand-area">
+
+    <h2>Shivam</h2>
+
+    <button class="menu-btn" onclick="toggleMenu()">☰</button>
+
+    <div class="premium-menu" id="premiumMenu">
+
+        <a href="#home">🏠 Home</a>
+        <a href="#skills">💻 My Skills</a>
+        <a href="#projects">🚀 My Projects</a>
+        <a href="college.html">🎓 College</a>
+        <a href="habit.html">📱 My App</a>
+        <a href="login.html">🔐 Login</a>
+        <a href="#contact">📩 Contact</a>
+
+    </div>
 
         <ul>
             <li><a href="#home">Home</a></li>
@@ -208,5 +224,34 @@
     </script>
 
 </body>
+<script>
+function toggleMenu() {
+    document
+        .getElementById("premiumMenu")
+        .classList.toggle("show");
+}
 
+/* menu option click karne par menu close */
+document.querySelectorAll(".premium-menu a").forEach(item => {
+    item.addEventListener("click", () => {
+        document
+            .getElementById("premiumMenu")
+            .classList.remove("show");
+    });
+});
+
+/* menu ke bahar click karne par close */
+document.addEventListener("click", function(event) {
+
+    const menu = document.getElementById("premiumMenu");
+    const button = document.querySelector(".menu-btn");
+
+    if (
+        !menu.contains(event.target) &&
+        !button.contains(event.target)
+    ) {
+        menu.classList.remove("show");
+    }
+});
+</script>
 </html>

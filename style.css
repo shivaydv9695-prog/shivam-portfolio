@@ -992,3 +992,93 @@ body::after {
     position: relative;
     z-index: 1;
 }
+/* ===== PREMIUM 3 LINE MENU ===== */
+
+.brand-area {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    position: relative;
+}
+
+.brand-area h2 {
+    margin: 0;
+}
+
+.menu-btn {
+    width: 38px;
+    height: 38px;
+    padding: 0;
+    margin: 0;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    font-size: 22px;
+    color: #00f7ff;
+
+    background: rgba(0, 247, 255, 0.08);
+    border: 1px solid rgba(0, 247, 255, 0.35);
+    border-radius: 8px;
+
+    cursor: pointer;
+}
+
+.menu-btn:hover {
+    background: rgba(0, 247, 255, 0.18);
+    box-shadow: 0 0 15px rgba(0, 247, 255, 0.4);
+}
+
+
+/* DROPDOWN */
+
+.premium-menu {
+    position: absolute;
+
+    top: 52px;
+    left: 0;
+
+    width: 230px;
+
+    padding: 12px;
+
+    background: rgba(2, 6, 23, 0.96);
+    backdrop-filter: blur(20px);
+
+    border: 1px solid rgba(0, 247, 255, 0.25);
+    border-radius: 15px;
+
+    box-shadow:
+        0 15px 40px rgba(0,0,0,0.5),
+        0 0 25px rgba(0,247,255,0.12);
+
+    display: none;
+
+    z-index: 9999;
+}
+
+.premium-menu.show {
+    display: block;
+}
+
+.premium-menu a {
+    display: block;
+
+    padding: 12px 15px;
+    margin: 3px 0;
+
+    color: white;
+    text-decoration: none;
+
+    border-radius: 8px;
+
+    transition: 0.25s;
+}
+
+.premium-menu a:hover {
+    color: #00f7ff;
+    background: rgba(0,247,255,0.10);
+
+    padding-left: 20px;
+}
