@@ -913,40 +913,76 @@ button:hover {
         font-size: 14px;
     }
 }
-/* =====================================
-   CINEMATIC CORNER SPOTLIGHT
-   Existing background stays unchanged
-===================================== */
+/* =========================================
+   CINEMATIC CORNER → PHOTO SPOTLIGHT
+========================================= */
 
 body::before {
     content: "";
     position: fixed;
 
-    /* Light source: top-right corner */
-    top: -250px;
-    right: -250px;
+    /* light starts outside TOP-RIGHT corner */
+    top: -180px;
+    right: -120px;
 
-    width: 1100px;
-    height: 1100px;
+    width: 900px;
+    height: 950px;
 
-    /* Soft cyan/blue light spreading across site */
-    background: radial-gradient(
-        ellipse at center,
-        rgba(0, 247, 255, 0.28) 0%,
-        rgba(0, 174, 255, 0.18) 22%,
-        rgba(37, 99, 235, 0.10) 42%,
-        rgba(0, 247, 255, 0.04) 58%,
-        transparent 75%
+    /* CONE / SPOTLIGHT BEAM */
+    background: linear-gradient(
+        135deg,
+        rgba(255,255,255,0.32) 0%,
+        rgba(0,247,255,0.24) 18%,
+        rgba(0,174,255,0.14) 38%,
+        rgba(0,174,255,0.06) 55%,
+        transparent 72%
     );
 
-    filter: blur(35px);
+    /* beam shape */
+    clip-path: polygon(
+        88% 0%,
+        100% 0%,
+        70% 100%,
+        15% 100%
+    );
+
+    filter: blur(28px);
 
     pointer-events: none;
+    z-index: 0;
 
+    opacity: 0.9;
+}
+
+
+/* LIGHT SOURCE IN CORNER */
+
+body::after {
+    content: "";
+    position: fixed;
+
+    top: -100px;
+    right: -100px;
+
+    width: 350px;
+    height: 350px;
+
+    background: radial-gradient(
+        circle,
+        rgba(255,255,255,0.65) 0%,
+        rgba(0,247,255,0.35) 25%,
+        rgba(0,174,255,0.12) 50%,
+        transparent 72%
+    );
+
+    filter: blur(25px);
+
+    pointer-events: none;
     z-index: 0;
 }
 
-/* Keep website content above spotlight */
+
+/* WEBSITE CONTENT ABOVE LIGHT */
 
 .navbar,
 .container,
