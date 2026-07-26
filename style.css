@@ -756,3 +756,57 @@ button:hover {
   }
 
 }
+/* ===== PROFILE SIZE + FULL HAIR FIX ===== */
+
+.right .profile-circle {
+    width: 310px !important;
+    height: 310px !important;
+
+    min-width: 310px !important;
+    min-height: 310px !important;
+
+    max-width: 310px !important;
+    max-height: 310px !important;
+
+    border-radius: 50% !important;
+    overflow: hidden !important;
+
+    border: 3px solid #00f7ff !important;
+
+    box-shadow:
+        0 0 12px #00f7ff,
+        0 0 30px rgba(0, 247, 255, 0.55),
+        0 0 60px rgba(0, 153, 255, 0.25) !important;
+}
+
+
+/* PHOTO POSITION */
+
+.right .profile-circle img {
+    width: 100% !important;
+    height: 100% !important;
+
+    object-fit: cover !important;
+
+    /* Hair ko zyada visible rakhega */
+    object-position: center 25% !important;
+
+    border-radius: 50% !important;
+}
+
+
+/* MOBILE */
+
+@media (max-width: 768px) {
+
+    .right .profile-circle {
+        width: 250px !important;
+        height: 250px !important;
+
+        min-width: 250px !important;
+        min-height: 250px !important;
+
+        max-width: 250px !important;
+        max-height: 250px !important;
+    }
+}
