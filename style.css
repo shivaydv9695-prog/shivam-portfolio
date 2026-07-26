@@ -14,21 +14,34 @@ html {
 
 body {
   min-height: 100vh;
+  margin: 0;
   font-family: Arial, sans-serif;
   color: white;
   overflow-x: hidden;
 
-  background-image:
-    linear-gradient(
-      rgba(2, 6, 23, 0.45),
-      rgba(2, 6, 23, 0.70)
-    ),
-    url("https://images.unsplash.com/photo-1518770660439-4636190af475");
+  background:
+    radial-gradient(circle at 15% 20%,
+      rgba(0, 247, 255, 0.18) 0%,
+      transparent 28%),
 
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
+    radial-gradient(circle at 85% 70%,
+      rgba(0, 102, 255, 0.18) 0%,
+      transparent 30%),
+
+    radial-gradient(circle at 50% 100%,
+      rgba(98, 0, 255, 0.13) 0%,
+      transparent 35%),
+
+    linear-gradient(
+      135deg,
+      #020617 0%,
+      #061426 35%,
+      #071a2d 65%,
+      #020617 100%
+    );
+
   background-attachment: fixed;
+  background-size: cover;
 }
 
 /* ==============================
